@@ -14,11 +14,9 @@ provider "helm" {
 }
 
 resource "helm_release" "nginx_ingress" {
-  name       = "nginx-ingress"
-  repository = "https://kubernetes.github.io/ingress-nginx"
-  chart      = "nginx-ingress"
-  version    = "3.24.0"
-  namespace  = "kube-system"
+  name      = "nginx-ingress"
+  chart     = "https://github.com/kubernetes/ingress-nginx/releases/download/helm-chart-3.24.0/ingress-nginx-3.24.0.tgz"
+  namespace = "kube-system"
 
   values = [
     file("helm/nginx-ingress/values.yml")
