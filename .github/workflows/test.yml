@@ -12,11 +12,20 @@ jobs:
 
     steps:
 
-      - name: Create k8s Kind Cluster
-        uses: helm/kind-action@v1.1.0
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: terraform.tfstate
+          key: terraform.tfstate
 
       - name: Install Terraform
         uses: hashicorp/setup-terraform@v1
+
+      - name: Create k8s Kind Cluster
+        uses: helm/kind-action@v1.1.0
 
 #     - name: Terraform Init
 #       id: init
@@ -29,6 +38,10 @@ jobs:
 #     - name: Terraform Apply
 #       id: apply
 #       run: terraform apply -input=false -auto-approve
-  
-      - name: Kubectl Namespaces
-        run: kubectl get ns
+
+      - name: Kubectl Config
+        run: |
+          ls ~/.kube/config
+          cat ~/.kube/config
+          kubectl get ns
+
