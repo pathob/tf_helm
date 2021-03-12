@@ -1,9 +1,8 @@
 name: Test
 
 on:
-  workflow_dispatch: {} # allow workflow to be run manually
-  push:
-    branches: [ main ]
+  push: {}
+  workflow_dispatch: {}
 
 jobs:
   create-cluster:

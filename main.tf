@@ -15,9 +15,9 @@ provider "helm" {
 
 resource "helm_release" "nginx_ingress" {
   name       = "nginx-ingress"
-  repository = "https://kubernetes.github.io/ingress-nginx"
+  repository = "https://helm.nginx.com/stable"
   chart      = "nginx-ingress"
-  version    = "3.24.0"
+  version    = "0.8.0"
   namespace  = "kube-system"
 
   values = [
