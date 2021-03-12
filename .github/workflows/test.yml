@@ -10,6 +10,9 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      TF_LOG: TRACE
+
     steps:
 
       - name: Checkout
