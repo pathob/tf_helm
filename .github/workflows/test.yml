@@ -27,21 +27,25 @@ jobs:
       - name: Create k8s Kind Cluster
         uses: helm/kind-action@v1.1.0
 
-#     - name: Terraform Init
-#       id: init
-#       run: terraform init -input=false
-# 
-#     - name: Terraform Plan
-#       id: plan
-#       run: terraform plan -input=false
-# 
-#     - name: Terraform Apply
-#       id: apply
-#       run: terraform apply -input=false -auto-approve
-
-      - name: Kubectl Config
+      - name: Versions
         run: |
-          ls ~/.kube/config
-          cat ~/.kube/config
-          kubectl get ns
+          kubectl version
+          helm version
+          terraform -v
+
+      - name: Terraform Init
+        id: init
+        run: terraform init -input=false
+  
+      - name: Terraform Plan
+        id: plan
+        run: terraform plan -input=false
+  
+      - name: Terraform Apply
+        id: apply
+        run: terraform apply -input=false -auto-approve
+
+      - name: Kubectl Test
+        run: |
+          kubectl get all -n kube-system
 

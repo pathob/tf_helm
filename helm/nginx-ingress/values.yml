@@ -1,0 +1,4 @@
+controller:
+  kind: DaemonSet
+  nodeSelector:
+    beta.kubernetes.io/os: linux
