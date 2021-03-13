@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      TF_LOG: TRACE
+      TF_LOG: DEBUG
       HELM_DEBUG: 1
 
     steps:
